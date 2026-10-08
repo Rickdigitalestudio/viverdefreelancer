@@ -2,73 +2,109 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Viver de Freelancer — Designer Web 3D</title>
+<title>Viver de Freelancer — Designer Web 3D Interativo</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#0f2e2b;color:#fff;overflow-x:hidden}
+#bar{position:fixed;top:0;left:0;height:3px;background:#5dffc7;width:0;z-index:99}
+nav{position:sticky;top:0;z-index:50;background:rgba(10,30,28,.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.1)}
+.nav{max-width:1120px;margin:0 auto;padding:12px 22px;display:flex;justify-content:space-between;align-items:center}
+.nav a{color:#cde3df;text-decoration:none;font-size:.85rem;font-weight:600;margin-left:16px}.nav a:hover{color:#5dffc7}
 .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:70px 0 50px;perspective:1200px}
-.hero h1{font-size:clamp(2.4rem,6vw,4rem);line-height:1.02;letter-spacing:-.03em}
-.hero h1 span{background:linear-gradient(90deg,#5dffc7,#00bfff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{color:#cde3df;margin-top:14px}
-.btns{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
-.btn{background:#5dffc7;color:#06231f;padding:14px 28px;border-radius:999px;font-weight:800;text-decoration:none;box-shadow:0 10px 0 #04332d;transition:.2s}
-.btn:active{translate:0 6px;box-shadow:0 4px 0 #04332d}.btn.ghost{background:transparent;color:#fff;border:2px solid #5dffc7;box-shadow:none}
-.photo3d{border-radius:24px;overflow:hidden;border:3px solid rgba(255,255,255,.2);box-shadow:0 30px 60px rgba(0,0,0,.5);transform-style:preserve-3d;transition:transform .15s}
-.photo3d img{width:100%;display:block;transform:translateZ(30px)}
-section{padding:56px 0}h2{font-size:clamp(1.7rem,4vw,2.5rem);text-align:center;letter-spacing:-.02em}
-.sub{text-align:center;color:#9dbfba;margin:8px 0 28px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.card3d{background:linear-gradient(180deg,#174440,#0d2725);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:20px;transform-style:preserve-3d;box-shadow:0 18px 40px rgba(0,0,0,.4);transition:transform .15s}
-.card3d img{width:100%;border-radius:14px;margin-bottom:12px;transform:translateZ(30px)}
-.card3d h3{transform:translateZ(20px)}.card3d p{color:#b9d4d0;font-size:.92rem;transform:translateZ(15px)}
-.wide img{max-height:320px;object-fit:cover}
-.price{background:linear-gradient(180deg,#fff,#d9f5ec);color:#06231f;text-align:center}.price b{font-size:1.8rem;display:block}.price .btn{margin-top:12px;display:inline-block}
-.cta{background:linear-gradient(180deg,#123936,#071917);border:1px solid rgba(255,255,255,.15);border-radius:26px;padding:46px 26px;text-align:center}
-input,textarea{width:100%;padding:14px;border-radius:12px;border:1px solid #2a5a55;background:#0a1f1d;color:#fff;margin-top:10px}
-footer{text-align:center;padding:30px;color:#7a9a95;font-size:.85rem}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.grid3,.grid4{grid-template-columns:1fr}}
-.float{animation:fl 4s ease-in-out infinite}@keyframes fl{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:56px 0 30px;perspective:1200px}
+.hero h1{font-size:clamp(2.3rem,6vw,3.9rem);line-height:1.02}#type{color:#5dffc7;border-right:3px solid #5dffc7;padding-right:4px}
+.stats{display:flex;gap:18px;margin-top:18px}.stats div{background:#123936;border-radius:14px;padding:12px 16px;min-width:110px;text-align:center}.stats b{font-size:1.5rem;color:#5dffc7}
+.btn{background:#5dffc7;color:#06231f;padding:14px 26px;border-radius:999px;font-weight:800;text-decoration:none;display:inline-block;box-shadow:0 8px 0 #04332d;cursor:pointer;border:0}.btn.ghost{background:transparent;color:#fff;border:2px solid #5dffc7;box-shadow:none}
+.photo3d{border-radius:22px;overflow:hidden;border:3px solid rgba(255,255,255,.2);box-shadow:0 26px 60px rgba(0,0,0,.5)}
+.photo3d img{width:100%;display:block}
+section{padding:48px 0}h2{text-align:center;font-size:clamp(1.6rem,4vw,2.4rem)}.sub{text-align:center;color:#9dbfba;margin:8px 0 22px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card3d{background:linear-gradient(180deg,#174440,#0d2725);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:18px;box-shadow:0 16px 36px rgba(0,0,0,.4);cursor:pointer}
+.card3d img{width:100%;border-radius:12px;margin-bottom:10px}.card3d p{color:#b9d4d0;font-size:.9rem}
+.card3d.active{outline:2px solid #5dffc7}
+.filters{display:flex;gap:8px;justify-content:center;margin-bottom:18px;flex-wrap:wrap}.filters button{background:transparent;color:#fff;border:1px solid #5dffc7;border-radius:999px;padding:8px 18px;cursor:pointer}.filters button.on{background:#5dffc7;color:#06231f;font-weight:800}
+.tabs{display:flex;gap:8px;justify-content:center;margin:16px 0;flex-wrap:wrap}.tabs button{background:#123936;color:#fff;border:1px solid #2a5a55;border-radius:10px;padding:10px 16px;cursor:pointer}.tabs button.on{background:#5dffc7;color:#06231f;font-weight:800}
+.depo{text-align:center;min-height:170px}.depo p{font-size:1.15rem;font-style:italic}.dots{margin-top:12px}.dots button{width:10px;height:10px;border-radius:50%;border:0;margin:0 4px;background:#2a5a55;cursor:pointer}.dots button.on{background:#5dffc7}
+.steps{display:flex;gap:12px;margin-top:18px}.steps div{flex:1;background:#123936;border-radius:14px;padding:16px;text-align:center;cursor:pointer;border:2px solid transparent}.steps div.on{border-color:#5dffc7}
+#prog{height:8px;background:#123936;border-radius:99px;margin-top:12px;overflow:hidden}#prog i{display:block;height:100%;width:33%;background:#5dffc7;transition:.4s}
+.reveal{opacity:0;translate:0 22px;transition:.6s}.reveal.vis{opacity:1;translate:0 0}
+#top{position:fixed;right:16px;bottom:16px;background:#5dffc7;border:0;width:46px;height:46px;border-radius:50%;font-size:20px;cursor:pointer;display:none}
+#msg{background:#0a3d2f;border:1px solid #5dffc7;border-radius:12px;padding:12px;margin-top:10px;display:none}
+footer{text-align:center;padding:28px;color:#7a9a95;font-size:.85rem}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.grid3,.grid4,.steps{grid-template-columns:1fr}.grid3,.grid4,.steps{display:grid}}
 </style>
 </head>
 <body>
+<div id="bar"></div>
+<nav><div class="nav"><b>VIVER DE FREELANCER</b><div><a href="#servicos">Serviços</a><a href="#portfolio">Portfólio</a><a href="#precos">Preços</a><a href="#contato">Contato</a></div></div></nav>
 <div class="wrap">
 <header class="hero">
-<div><p style="letter-spacing:.2em;font-size:.78rem;color:#5dffc7;font-weight:800">FREELANCER • DESIGNER WEB</p>
-<h1>Bem-vindo ao <span>meu mundo!</span></h1>
-<p>Sou designer web apaixonado por criar experiências digitais únicas e envolventes — agora em 3D, igual ao Gamma, mas em código puro.</p>
-<div class="btns"><a class="btn" href="mailto:henriqueluizd91@gmail.com">Contate-me</a><a class="btn ghost" href="https://github.com/Ricklima991" target="_blank">Veja meu portfólio</a></div></div>
-<div class="photo3d tilt float"><img src="img/g1.png" alt="Designer freelancer"></div>
+<div><h1>Bem-vindo ao <br><span id="type">meu mundo!</span></h1>
+<p>Designer web freelancer — sites, branding e UX/UI. <span id="rot">Responsivo</span> • 3D • dinâmico.</p>
+<div class="stats"><div><b data-n="47">0</b><br><small>projetos</small></div><div><b data-n="32">0</b><br><small>clientes</small></div><div><b data-n="3">0</b><br><small>anos</small></div></div>
+<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#contato">Contate-me</a><a class="btn ghost" href="https://github.com/Ricklima991" target="_blank">Portfólio GitHub</a></div></div>
+<div class="photo3d tilt"><img src="img/g1.png" alt="Freelancer"></div>
 </header>
 
-<section><h2>Meus Serviços</h2><p class="sub">3D interativo — passe o mouse</p><div class="grid3">
-<div class="card3d tilt"><img src="img/g2.png" alt="Design de sites"><h3>Design de Sites</h3><p>Responsivos, intuitivos, otimizados para conversão.</p></div>
-<div class="card3d tilt"><img src="img/g3.png" alt="Branding"><h3>Branding Digital</h3><p>Presença forte e consistente para sua marca.</p></div>
-<div class="card3d tilt"><img src="img/g6.png" alt="UX UI"><h3>Otimização UX/UI</h3><p>Foco nas necessidades do seu público.</p></div>
+<section id="servicos" class="reveal"><h2>Meus Serviços</h2><p class="sub">Clique nos cards para detalhes</p><div class="grid3">
+<div class="card3d tilt" onclick="this.classList.toggle('active')"><img src="img/g2.png"><h3>Design de Sites</h3><p class="more">Responsivos e intuitivos, otimizados para conversão e desempenho. + SEO + velocidade.</p></div>
+<div class="card3d tilt" onclick="this.classList.toggle('active')"><img src="img/g3.png"><h3>Branding Digital</h3><p class="more">Presença forte e consistente: logo, paleta, voz e guia de marca.</p></div>
+<div class="card3d tilt" onclick="this.classList.toggle('active')"><img src="img/g6.png"><h3>Otimização UX/UI</h3><p class="more">Pesquisa, protótipo, testes e melhoria contínua focada no usuário.</p></div>
 </div></section>
 
-<section><h2>Meu Portfólio</h2><p class="sub">Imagens originais do Gamma</p><div class="grid3">
-<div class="card3d tilt"><img src="img/g2.png" alt="Projeto 1"><h3>Projeto 1</h3><p>Site responsivo com experiência fluida.</p></div>
-<div class="card3d tilt"><img src="img/g7.png" alt="Projeto 2"><h3>Projeto 2</h3><p>Identidade visual para startup.</p></div>
-<div class="card3d tilt"><img src="img/g8.png" alt="Projeto 3"><h3>Projeto 3</h3><p>Otimização UX em app mobile.</p></div>
+<section id="portfolio" class="reveal"><h2>Meu Portfólio</h2><div class="filters"><button class="on" data-f="all">Todos</button><button data-f="site">Sites</button><button data-f="brand">Branding</button><button data-f="ux">UX</button></div>
+<div class="grid3" id="gridP">
+<div class="card3d tilt" data-c="site"><img src="img/g2.png"><h3>Projeto 1 — Site</h3><p>Responsivo e fluido.</p></div>
+<div class="card3d tilt" data-c="brand"><img src="img/g7.png"><h3>Projeto 2 — Branding</h3><p>Identidade para startup.</p></div>
+<div class="card3d tilt" data-c="ux"><img src="img/g8.png"><h3>Projeto 3 — UX App</h3><p>Interface mobile otimizada.</p></div>
 </div></section>
 
-<section><h2>Meus Clientes</h2><div class="card3d tilt wide"><img src="img/g5.png" alt="Clientes comemorando"><h3 style="text-align:center;margin-top:10px">Startups • Pequenas • Grandes • Indivíduos</h3><p style="text-align:center">Ajudo marcas emergentes, pequenas empresas, grandes marcas e profissionais.</p></div></section>
+<section class="reveal"><h2>Meus Clientes</h2><div class="tabs"><button class="on" data-t="Startups: marcas emergentes no digital.">Startups</button><button data-t="Pequenas: soluções para crescer.">Pequenas</button><button data-t="Grandes: alto impacto.">Grandes</button><button data-t="Indivíduos: portfólios únicos.">Indivíduos</button></div>
+<div class="card3d"><img src="img/g5.png" style="max-height:300px;object-fit:cover"><p id="tInfo" style="text-align:center;margin-top:10px">Startups: marcas emergentes no digital.</p></div></section>
 
-<section><h2>Meus Preços</h2><p class="sub">Escolha e clique</p><div class="grid4">
-<div class="card3d tilt price"><h3>Básico</h3><b>R$ 2.500</b><p>Site básico.</p><a class="btn" href="mailto:henriqueluizd91@gmail.com?subject=Pacote Basico">Quero</a></div>
-<div class="card3d tilt price"><h3>Intermediário</h3><b>R$ 5.000</b><p>Identidade + site.</p><a class="btn" href="mailto:henriqueluizd91@gmail.com?subject=Pacote Intermediario">Quero</a></div>
-<div class="card3d tilt price"><h3>Premium</h3><b>R$ 10.000</b><p>App + UX/UI.</p><a class="btn" href="mailto:henriqueluizd91@gmail.com?subject=Pacote Premium">Quero</a></div>
-<div class="card3d tilt price"><h3>Custom</h3><b>Sob consulta</b><p>Orçamento personalizado.</p><a class="btn" href="mailto:henriqueluizd91@gmail.com?subject=Projeto Customizado">Falar</a></div>
+<section id="precos" class="reveal"><h2>Meus Preços</h2><p class="sub"><label><input type="checkbox" id="pix" style="width:auto"> 10% off no Pix</label></p><div class="grid4">
+<div class="card3d" style="background:#fff;color:#06231f;text-align:center"><h3>Básico</h3><b class="pr" data-v="2500">R$ 2.500</b><p>Site básico.</p></div>
+<div class="card3d" style="background:#fff;color:#06231f;text-align:center"><h3>Intermediário</h3><b class="pr" data-v="5000">R$ 5.000</b><p>Identidade + site.</p></div>
+<div class="card3d" style="background:#fff;color:#06231f;text-align:center"><h3>Premium</h3><b class="pr" data-v="10000">R$ 10.000</b><p>App + UX.</p></div>
+<div class="card3d" style="background:#fff;color:#06231f;text-align:center"><h3>Custom</h3><b>Sob consulta</b><p>Personalizado.</p></div>
 </div></section>
 
-<section><div class="cta"><h2>Vamos Conversar</h2><p>1. Contato • 2. Proposta • 3. Início ágil</p>
-<form action="mailto:henriqueluizd91@gmail.com" method="post" enctype="text/plain"><input name="nome" placeholder="Seu nome" required><input name="email" type="email" placeholder="E-mail" required><textarea rows="4" name="msg" placeholder="Detalhes do projeto" required></textarea><button class="btn" style="margin-top:12px;border:0;cursor:pointer;width:100%">Enviar</button></form></div></section>
+<section class="reveal"><h2>Processo</h2><p class="sub">Clique nas etapas</p><div class="steps"><div class="on" data-s="Entendimento: metas, público e requisitos.">1<br><b>Entendimento</b></div><div data-s="Planejamento: plano e proposta.">2<br><b>Planejamento</b></div><div data-s="Criação: ágil e iterativa.">3<br><b>Criação</b></div></div><div id="prog"><i></i></div><p id="sInfo" style="text-align:center;margin-top:10px">Entendimento: metas, público e requisitos.</p></section>
+
+<section class="reveal"><h2>Depoimentos</h2><div class="card3d depo"><p id="q">"O trabalho foi incrível. Superou expectativas."</p><p style="margin-top:10px;color:#5dffc7;font-weight:800" id="w">— Maria, Startup</p><div class="dots"><button class="on"></button><button></button><button></button></div><div style="margin-top:12px"><button class="btn ghost" id="prev">‹</button> <button class="btn ghost" id="next">›</button></div></div></section>
+
+<section id="contato" class="reveal"><div class="card3d" style="text-align:center"><h2>Vamos Conversar</h2><p class="sub">Respondo em até 24h</p>
+<input id="n" placeholder="Seu nome"><input id="e" type="email" placeholder="E-mail"><textarea id="m" rows="4" placeholder="Detalhes do projeto"></textarea>
+<button class="btn" style="width:100%;margin-top:10px" onclick="send()">Enviar via WhatsApp</button><div id="msg"></div></div></section>
 </div>
-<footer>De Gamma para GitHub Pages 3D • Henrique Luiz Dutra</footer>
+<footer>Gamma → GitHub 3D dinâmico • Henrique Luiz Dutra</footer>
+<button id="top" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
 <script>
-document.querySelectorAll('.tilt').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`rotateY(${x*14}deg) rotateX(${-y*14}deg) scale(1.02)`});c.addEventListener('mouseleave',()=>c.style.transform='')});
+// tilt
+document.querySelectorAll('.tilt').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.transform=`rotateY(${(e.clientX-r.left)/r.width*.5*20-10}deg) rotateX(${ -((e.clientY-r.top)/r.height*.5*20-10)}deg)`});c.addEventListener('mouseleave',()=>c.style.transform='')});
+// progress + top + reveal
+addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('bar').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';document.getElementById('top').style.display=h.scrollTop>600?'block':'none'});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}));document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+// typewriter
+const words=['meu mundo!','sites que vendem!','branding forte!','UX que encanta!'];let wi=0,ci=0,del=false;
+(function tw(){const el=document.getElementById('type');const w=words[wi];el.textContent=w.slice(0,ci);if(!del){ci++;if(ci>w.length+8)del=true}else{ci--;if(ci===0){del=false;wi=(wi+1)%words.length}}setTimeout(tw,del?40:90)})();
+const rot=['Responsivo','Rápido','Otimizado','Criativo'];let ri=0;setInterval(()=>{document.getElementById('rot').textContent=rot[ri++%rot.length]},1500);
+// counters
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('b').forEach(b=>{const t=+b.dataset.n;let c=0;const iv=setInterval(()=>{c+=Math.ceil(t/40);if(c>=t){c=t;clearInterval(iv)}b.textContent=c},40)});co.unobserve(e.target)}}));co.observe(document.querySelector('.stats'));
+// filter
+document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('on'));b.classList.add('on');const f=b.dataset.f;document.querySelectorAll('#gridP>div').forEach(d=>d.style.display=(f==='all'||d.dataset.c===f)?'':'none')});
+// tabs + steps
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('tInfo').textContent=b.dataset.t});
+const st=[...document.querySelectorAll('.steps div')];st.forEach((d,i)=>d.onclick=()=>{st.forEach(x=>x.classList.remove('on'));d.classList.add('on');document.getElementById('prog').firstElementChild.style.width=((i+1)/3*100)+'%';document.getElementById('sInfo').textContent=d.dataset.s});
+// depoimentos
+const Q=[['"O trabalho foi incrível. Superou expectativas."','— Maria, Startup'],['"Site que vende de verdade."','— João, Varejo'],['"Entrega rápida e ótima comunicação."','— Ana, Marketing']];let qi=0;
+function show(i){qi=(i+Q.length)%Q.length;document.getElementById('q').textContent=Q[qi][0];document.getElementById('w').textContent=Q[qi][1];document.querySelectorAll('.dots button').forEach((d,j)=>d.classList.toggle('on',j===qi))}
+document.getElementById('next').onclick=()=>show(qi+1);document.getElementById('prev').onclick=()=>show(qi-1);
+document.querySelectorAll('.dots button').forEach((d,j)=>d.onclick=()=>show(j));setInterval(()=>show(qi+1),5000);
+// pix
+document.getElementById('pix').onchange=e=>{document.querySelectorAll('.pr').forEach(b=>{const v=+b.dataset.v;const nv=e.target.checked?Math.round(v*.9):v;b.textContent='R$ '+nv.toLocaleString('pt-BR')})};
+// form
+function send(){const n=document.getElementById('n').value,e=document.getElementById('e').value,m=document.getElementById('m').value;const box=document.getElementById('msg');box.style.display='block';if(!n||!e||!m){box.textContent='Preencha nome, e-mail e projeto.';return}box.textContent='Abrindo WhatsApp...';open('https://wa.me/5511989426415?text='+encodeURIComponent('Olá! Sou '+n+' ('+e+'). Projeto: '+m),'_blank')}
 </script>
 </body>
 </html>
