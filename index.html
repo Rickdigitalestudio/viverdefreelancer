@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Viver de Freelancer — Designer Web 3D Interativo</title>
+<meta name="description" content="Viver de Freelancer: site 100% 3D e interativo do designer web freelancer — hero WebGL, serviços, portfólio, clientes, preços, processo e depoimentos com as fotos originais do projeto.">
+<meta name="theme-color" content="#071a18">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23071a18'/%3E%3Cpath%20d='M32%2011%2051%2022v20L32%2053%2013%2042V22z'%20fill='none'%20stroke='%235dffc7'%20stroke-width='4'%20stroke-linejoin='round'/%3E%3Cpath%20d='M32%2032%2051%2022M32%2032v21M32%2032%2013%2022'%20fill='none'%20stroke='%235dffc7'%20stroke-width='4'%20stroke-linejoin='round'/%3E%3C/svg%3E">
     <!-- OG-ESTUDIO-RICK-DIGITAL -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pt_BR">
@@ -19,110 +22,425 @@
     <meta name="twitter:image" content="https://rickdigitalestudio.github.io/viverdefreelancer/og-estudio-rick-digital.png">
     <!-- OG-ESTUDIO-RICK-DIGITAL-END -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#0f2e2b;color:#fff;overflow-x:hidden}
-#bar{position:fixed;top:0;left:0;height:3px;background:#5dffc7;width:0;z-index:99}
-nav{position:sticky;top:0;z-index:50;background:rgba(10,30,28,.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.1)}
-.nav{max-width:1120px;margin:0 auto;padding:12px 22px;display:flex;justify-content:space-between;align-items:center}
-.nav a{color:#cde3df;text-decoration:none;font-size:.85rem;font-weight:600;margin-left:16px}.nav a:hover{color:#5dffc7}
-.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:56px 0 30px;perspective:1200px}
-.hero h1{font-size:clamp(2.3rem,6vw,3.9rem);line-height:1.02}#type{color:#5dffc7;border-right:3px solid #5dffc7;padding-right:4px}
-.stats{display:flex;gap:18px;margin-top:18px}.stats div{background:#123936;border-radius:14px;padding:12px 16px;min-width:110px;text-align:center}.stats b{font-size:1.5rem;color:#5dffc7}
-.btn{background:#5dffc7;color:#06231f;padding:14px 26px;border-radius:999px;font-weight:800;text-decoration:none;display:inline-block;box-shadow:0 8px 0 #04332d;cursor:pointer;border:0}.btn.ghost{background:transparent;color:#fff;border:2px solid #5dffc7;box-shadow:none}
-.photo3d{border-radius:22px;overflow:hidden;border:3px solid rgba(255,255,255,.2);box-shadow:0 26px 60px rgba(0,0,0,.5)}
-.photo3d img{width:100%;display:block}
-section{padding:48px 0}h2{text-align:center;font-size:clamp(1.6rem,4vw,2.4rem)}.sub{text-align:center;color:#9dbfba;margin:8px 0 22px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.card3d{background:linear-gradient(180deg,#174440,#0d2725);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:18px;box-shadow:0 16px 36px rgba(0,0,0,.4);cursor:pointer}
-.card3d img{width:100%;border-radius:12px;margin-bottom:10px}.card3d p{color:#b9d4d0;font-size:.9rem}
-.card3d.active{outline:2px solid #5dffc7}
-.filters{display:flex;gap:8px;justify-content:center;margin-bottom:18px;flex-wrap:wrap}.filters button{background:transparent;color:#fff;border:1px solid #5dffc7;border-radius:999px;padding:8px 18px;cursor:pointer}.filters button.on{background:#5dffc7;color:#06231f;font-weight:800}
-.tabs{display:flex;gap:8px;justify-content:center;margin:16px 0;flex-wrap:wrap}.tabs button{background:#123936;color:#fff;border:1px solid #2a5a55;border-radius:10px;padding:10px 16px;cursor:pointer}.tabs button.on{background:#5dffc7;color:#06231f;font-weight:800}
-.depo{text-align:center;min-height:170px}.depo p{font-size:1.15rem;font-style:italic}.dots{margin-top:12px}.dots button{width:10px;height:10px;border-radius:50%;border:0;margin:0 4px;background:#2a5a55;cursor:pointer}.dots button.on{background:#5dffc7}
-.steps{display:flex;gap:12px;margin-top:18px}.steps div{flex:1;background:#123936;border-radius:14px;padding:16px;text-align:center;cursor:pointer;border:2px solid transparent}.steps div.on{border-color:#5dffc7}
-#prog{height:8px;background:#123936;border-radius:99px;margin-top:12px;overflow:hidden}#prog i{display:block;height:100%;width:33%;background:#5dffc7;transition:.4s}
-.reveal{opacity:0;translate:0 22px;transition:.6s}.reveal.vis{opacity:1;translate:0 0}
-#top{position:fixed;right:16px;bottom:16px;background:#5dffc7;border:0;width:46px;height:46px;border-radius:50%;font-size:20px;cursor:pointer;display:none}
-#msg{background:#0a3d2f;border:1px solid #5dffc7;border-radius:12px;padding:12px;margin-top:10px;display:none}
-footer{text-align:center;padding:28px;color:#7a9a95;font-size:.85rem}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.grid3,.grid4,.steps{grid-template-columns:1fr}.grid3,.grid4,.steps{display:grid}}
-</style>
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/"
+}}
+</script>
+<noscript><style>#loader{display:none}.flip-inner{transform:none!important}.face.back{display:none}.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
-<div id="bar"></div>
-<nav><div class="nav"><b>VIVER DE FREELANCER</b><div><a href="#servicos">Serviços</a><a href="#portfolio">Portfólio</a><a href="#precos">Preços</a><a href="#contato">Contato</a></div></div></nav>
-<div class="wrap">
-<header class="hero">
-<div><h1>Bem-vindo ao <br><span id="type">meu mundo!</span></h1>
-<p>Designer web freelancer — sites, branding e UX/UI. <span id="rot">Responsivo</span> • 3D • dinâmico.</p>
-<div class="stats"><div><b data-n="47">0</b><br><small>projetos</small></div><div><b data-n="32">0</b><br><small>clientes</small></div><div><b data-n="3">0</b><br><small>anos</small></div></div>
-<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#contato">Contate-me</a><a class="btn ghost" href="https://github.com/Rickdigitalestudio" target="_blank">Portfólio GitHub</a></div></div>
-<div class="photo3d tilt"><img src="img/g1.png" alt="Freelancer"></div>
-</header>
 
-<section id="servicos" class="reveal"><h2>Meus Serviços</h2><p class="sub">Clique nos cards para detalhes</p><div class="grid3">
-<div class="card3d tilt" onclick="this.classList.toggle('active')"><img src="img/g2.png"><h3>Design de Sites</h3><p class="more">Responsivos e intuitivos, otimizados para conversão e desempenho. + SEO + velocidade.</p></div>
-<div class="card3d tilt" onclick="this.classList.toggle('active')"><img src="img/g3.png"><h3>Branding Digital</h3><p class="more">Presença forte e consistente: logo, paleta, voz e guia de marca.</p></div>
-<div class="card3d tilt" onclick="this.classList.toggle('active')"><img src="img/g6.png"><h3>Otimização UX/UI</h3><p class="more">Pesquisa, protótipo, testes e melhoria contínua focada no usuário.</p></div>
-</div></section>
+<div id="bar" aria-hidden="true"></div>
 
-<section id="portfolio" class="reveal"><h2>Meu Portfólio</h2><div class="filters"><button class="on" data-f="all">Todos</button><button data-f="site">Sites</button><button data-f="brand">Branding</button><button data-f="ux">UX</button></div>
-<div class="grid3" id="gridP">
-<div class="card3d tilt" data-c="site"><img src="img/g2.png"><h3>Projeto 1 — Site</h3><p>Responsivo e fluido.</p></div>
-<div class="card3d tilt" data-c="brand"><img src="img/g7.png"><h3>Projeto 2 — Branding</h3><p>Identidade para startup.</p></div>
-<div class="card3d tilt" data-c="ux"><img src="img/g8.png"><h3>Projeto 3 — UX App</h3><p>Interface mobile otimizada.</p></div>
-</div></section>
+<canvas id="webgl" aria-hidden="true"></canvas>
 
-<section class="reveal"><h2>Meus Clientes</h2><div class="tabs"><button class="on" data-t="Startups: marcas emergentes no digital.">Startups</button><button data-t="Pequenas: soluções para crescer.">Pequenas</button><button data-t="Grandes: alto impacto.">Grandes</button><button data-t="Indivíduos: portfólios únicos.">Indivíduos</button></div>
-<div class="card3d"><img src="img/g5.png" style="max-height:300px;object-fit:cover"><p id="tInfo" style="text-align:center;margin-top:10px">Startups: marcas emergentes no digital.</p></div></section>
+<div id="cursor" aria-hidden="true"></div>
+<div id="cursorRing" aria-hidden="true"></div>
 
-<section id="precos" class="reveal"><h2>Meus Preços</h2><p class="sub"><label><input type="checkbox" id="pix" style="width:auto"> 10% off no Pix</label></p><div class="grid4">
-<div class="card3d" style="background:#fff;color:#06231f;text-align:center"><h3>Básico</h3><b class="pr" data-v="2500">R$ 2.500</b><p>Site básico.</p></div>
-<div class="card3d" style="background:#fff;color:#06231f;text-align:center"><h3>Intermediário</h3><b class="pr" data-v="5000">R$ 5.000</b><p>Identidade + site.</p></div>
-<div class="card3d" style="background:#fff;color:#06231f;text-align:center"><h3>Premium</h3><b class="pr" data-v="10000">R$ 10.000</b><p>App + UX.</p></div>
-<div class="card3d" style="background:#fff;color:#06231f;text-align:center"><h3>Custom</h3><b>Sob consulta</b><p>Personalizado.</p></div>
-</div></section>
-
-<section class="reveal"><h2>Processo</h2><p class="sub">Clique nas etapas</p><div class="steps"><div class="on" data-s="Entendimento: metas, público e requisitos.">1<br><b>Entendimento</b></div><div data-s="Planejamento: plano e proposta.">2<br><b>Planejamento</b></div><div data-s="Criação: ágil e iterativa.">3<br><b>Criação</b></div></div><div id="prog"><i></i></div><p id="sInfo" style="text-align:center;margin-top:10px">Entendimento: metas, público e requisitos.</p></section>
-
-<section class="reveal"><h2>Depoimentos</h2><div class="card3d depo"><p id="q">"O trabalho foi incrível. Superou expectativas."</p><p style="margin-top:10px;color:#5dffc7;font-weight:800" id="w">— Maria, Startup</p><div class="dots"><button class="on"></button><button></button><button></button></div><div style="margin-top:12px"><button class="btn ghost" id="prev">‹</button> <button class="btn ghost" id="next">›</button></div></div></section>
-
-<section id="contato" class="reveal"><div class="card3d" style="text-align:center"><h2>Vamos Conversar</h2><p class="sub">Respondo em até 24h</p>
-<input id="n" placeholder="Seu nome"><input id="e" type="email" placeholder="E-mail"><textarea id="m" rows="4" placeholder="Detalhes do projeto"></textarea>
-<button class="btn" style="width:100%;margin-top:10px" onclick="send()">Enviar via WhatsApp</button><div id="msg"></div></div></section>
+<div id="loader" role="status" aria-label="Carregando">
+  <div class="loader-cube"><span></span><span></span><span></span><span></span></div>
+  <p>VIVER DE FREELANCER</p>
+  <small>cena 3D · fotos originais</small>
 </div>
-<footer>Gamma → GitHub 3D dinâmico • Henrique Luiz Dutra<p class="credito-estudio" style="text-align:center;font-size:.7rem;letter-spacing:.06em;opacity:.6;padding:16px;margin:0;line-height:1.6">
-      Site criado por <a href="https://rickdigitalestudio.github.io/profissional-rickdutra/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Estúdio Rick Digital</a>
-    </p>
+
+<nav id="nav" aria-label="Navegação principal">
+  <div class="nav">
+    <a class="brand" href="#inicio">
+      <span class="brand-cube" aria-hidden="true"><i></i><i></i><i></i></span>
+      <b>VIVER DE FREELANCER</b>
+    </a>
+    <button id="burger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="#servicos">Serviços</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#precos">Preços</a>
+      <a href="#processo">Processo</a>
+      <a href="#contato" class="nav-cta">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero" id="inicio">
+    <div class="hero-text">
+      <p class="eyebrow"><span class="pulse" aria-hidden="true"></span> Estúdio Rick Digital · designer web freelancer</p>
+      <h1>Bem-vindo ao <br><span id="type">meu mundo!</span></h1>
+      <p class="lead">Designer web freelancer — sites, branding e UX/UI. <span id="rot" class="rot">Responsivo</span> • 3D • dinâmico.</p>
+
+      <div class="stats">
+        <div><b data-n="47">0</b><br><small>projetos</small></div>
+        <div><b data-n="32">0</b><br><small>clientes</small></div>
+        <div><b data-n="3">0</b><br><small>anos</small></div>
+      </div>
+
+      <div class="cta">
+        <a class="btn" href="#contato">Contate-me</a>
+        <a class="btn ghost" href="https://github.com/Rickdigitalestudio" target="_blank" rel="noopener">Portfólio GitHub</a>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true"><span class="mouse"><i></i></span> role para explorar o mundo 3D</div>
+    </div>
+
+    <div class="hero-visual">
+      <div id="hero3d" class="hero3d" data-src="img/g1.png" data-remote="https://rickdigitalestudio.github.io/viverdefreelancer/img/g1.png">
+        <img src="img/g1.png" alt="Retrato do designer web freelancer de blazer azul e óculos, sorrindo" class="hero-fallback">
+        <span class="hero-badge" aria-hidden="true">100% 3D</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= SERVIÇOS ================= -->
+  <section id="servicos" class="reveal">
+    <div class="section-head">
+      <p class="eyebrow">o que eu faço</p>
+      <h2>Meus Serviços</h2>
+      <p class="sub">Clique nos cards para detalhes — eles giram em 3D</p>
+    </div>
+
+    <div class="grid3">
+      <div class="flip tilt" tabindex="0" role="button" aria-pressed="false" aria-label="Design de Sites — girar card para ver detalhes">
+        <div class="flip-inner">
+          <div class="face front">
+            <span class="shot"><img src="img/g2.png" alt="Notebook exibindo um site responsivo em tela cheia"></span>
+            <div class="face-body">
+              <span class="tag">01 · web</span>
+              <h3>Design de Sites</h3>
+              <p class="hint">clique para girar <b>+</b></p>
+            </div>
+          </div>
+          <div class="face back">
+            <span class="tag">01 · web</span>
+            <h3>Design de Sites</h3>
+            <p class="more">Responsivos e intuitivos, otimizados para conversão e desempenho. + SEO + velocidade.</p>
+            <ul class="ticks">
+              <li>Landing pages que vendem</li>
+              <li>Core Web Vitals no verde</li>
+              <li>SEO técnico desde o 1º dia</li>
+            </ul>
+            <p class="flip-close">clique para voltar</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip tilt" tabindex="0" role="button" aria-pressed="false" aria-label="Branding Digital — girar card para ver detalhes">
+        <div class="flip-inner">
+          <div class="face front">
+            <span class="shot"><img src="img/g3.png" alt="Formas geométricas 3D em verde e azul, símbolo de identidade de marca"></span>
+            <div class="face-body">
+              <span class="tag">02 · marca</span>
+              <h3>Branding Digital</h3>
+              <p class="hint">clique para girar <b>+</b></p>
+            </div>
+          </div>
+          <div class="face back">
+            <span class="tag">02 · marca</span>
+            <h3>Branding Digital</h3>
+            <p class="more">Presença forte e consistente: logo, paleta, voz e guia de marca.</p>
+            <ul class="ticks">
+              <li>Logotipo e sistema visual</li>
+              <li>Paleta, tipografia e voz</li>
+              <li>Brand book completo</li>
+            </ul>
+            <p class="flip-close">clique para voltar</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip tilt" tabindex="0" role="button" aria-pressed="false" aria-label="Otimização UX/UI — girar card para ver detalhes">
+        <div class="flip-inner">
+          <div class="face front">
+            <span class="shot"><img src="img/g6.png" alt="Mockup de interface web branca em cima de fundo verde"></span>
+            <div class="face-body">
+              <span class="tag">03 · produto</span>
+              <h3>Otimização UX/UI</h3>
+              <p class="hint">clique para girar <b>+</b></p>
+            </div>
+          </div>
+          <div class="face back">
+            <span class="tag">03 · produto</span>
+            <h3>Otimização UX/UI</h3>
+            <p class="more">Pesquisa, protótipo, testes e melhoria contínua focada no usuário.</p>
+            <ul class="ticks">
+              <li>Pesquisa e mapas de jornada</li>
+              <li>Protótipo navegável</li>
+              <li>Testes e iteração ágil</li>
+            </ul>
+            <p class="flip-close">clique para voltar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PORTFÓLIO ================= -->
+  <section id="portfolio" class="reveal">
+    <div class="section-head">
+      <p class="eyebrow">trabalhos selecionados</p>
+      <h2>Meu Portfólio</h2>
+      <p class="sub">Filtre por categoria e clique na foto para ver em 3D</p>
+    </div>
+
+    <div class="filters" role="tablist" aria-label="Filtrar portfólio">
+      <button class="on" data-f="all" role="tab" aria-selected="true">Todos</button>
+      <button data-f="site" role="tab" aria-selected="false">Sites</button>
+      <button data-f="brand" role="tab" aria-selected="false">Branding</button>
+      <button data-f="ux" role="tab" aria-selected="false">UX</button>
+    </div>
+
+    <div class="grid3" id="gridP">
+      <article class="pcard tilt" data-c="site" tabindex="0" role="button"
+        data-src="img/g2.png" data-title="Projeto 1 — Site"
+        data-desc="Site responsivo e fluido, com foco em velocidade, SEO técnico e conversão. Layout adaptável do desktop ao mobile.">
+        <span class="shot"><img src="img/g2.png" alt="Notebook exibindo o Projeto 1, um site responsivo"><i class="shot-3d" aria-hidden="true"></i></span>
+        <div class="face-body">
+          <span class="tag">site</span>
+          <h3>Projeto 1 — Site</h3>
+          <p>Responsivo e fluido.</p>
+          <span class="open">ver em 3D ↗</span>
+        </div>
+      </article>
+
+      <article class="pcard tilt" data-c="brand" tabindex="0" role="button"
+        data-src="img/g7.png" data-title="Projeto 2 — Branding"
+        data-desc="Identidade completa para startup: sistema visual, wireframes de marca e aplicações digitais consistentes.">
+        <span class="shot"><img src="img/g7.png" alt="Mãos digitando em notebook cercado por wireframes e telas de marca"><i class="shot-3d" aria-hidden="true"></i></span>
+        <div class="face-body">
+          <span class="tag">branding</span>
+          <h3>Projeto 2 — Branding</h3>
+          <p>Identidade para startup.</p>
+          <span class="open">ver em 3D ↗</span>
+        </div>
+      </article>
+
+      <article class="pcard tilt" data-c="ux" tabindex="0" role="button"
+        data-src="img/g8.png" data-title="Projeto 3 — UX App"
+        data-desc="Interface mobile otimizada com pesquisa com usuários, protótipo testado e fluxos que reduzem atrito.">
+        <span class="shot"><img src="img/g8.png" alt="Retrato da cliente do Projeto 3, UX de aplicativo"><i class="shot-3d" aria-hidden="true"></i></span>
+        <div class="face-body">
+          <span class="tag">ux</span>
+          <h3>Projeto 3 — UX App</h3>
+          <p>Interface mobile otimizada.</p>
+          <span class="open">ver em 3D ↗</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= CLIENTES ================= -->
+  <section id="clientes" class="reveal">
+    <div class="section-head">
+      <p class="eyebrow">para quem eu crio</p>
+      <h2>Meus Clientes</h2>
+      <p class="sub">Escolha um perfil — o card gira em 3D</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Perfis de clientes">
+      <button class="on" role="tab" aria-selected="true" data-t="Startups: marcas emergentes no digital.">Startups</button>
+      <button role="tab" aria-selected="false" data-t="Pequenas: soluções para crescer.">Pequenas</button>
+      <button role="tab" aria-selected="false" data-t="Grandes: alto impacto.">Grandes</button>
+      <button role="tab" aria-selected="false" data-t="Indivíduos: portfólios únicos.">Indivíduos</button>
+    </div>
+
+    <div class="client-stage">
+      <div class="card3d client-card" id="clientCard">
+        <span class="shot"><img src="img/g5.png" alt="Equipe diversa comemorando com os punhos erguidos, time de clientes satisfeitos"></span>
+        <p id="tInfo">Startups: marcas emergentes no digital.</p>
+      </div>
+      <span class="client-ring" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <!-- ================= PREÇOS ================= -->
+  <section id="precos" class="reveal">
+    <div class="section-head">
+      <p class="eyebrow">planos transparentes</p>
+      <h2>Meus Preços</h2>
+      <p class="sub"><label class="pix"><input type="checkbox" id="pix"> <span class="switch" aria-hidden="true"><i></i></span> 10% off no Pix</label></p>
+    </div>
+
+    <div class="grid4">
+      <div class="price tilt" data-plan>
+        <span class="tag">básico</span>
+        <h3>Básico</h3>
+        <b class="pr" data-v="2500">R$ 2.500</b>
+        <p>Site básico.</p>
+        <ul class="ticks dark">
+          <li>1 página de alta conversão</li>
+          <li>Layout responsivo</li>
+          <li>Entrega em 7 dias</li>
+        </ul>
+        <span class="plan-btn" data-goto="#contato">quero este</span>
+      </div>
+
+      <div class="price featured tilt" data-plan>
+        <span class="flag">mais pedido</span>
+        <span class="tag">intermediário</span>
+        <h3>Intermediário</h3>
+        <b class="pr" data-v="5000">R$ 5.000</b>
+        <p>Identidade + site.</p>
+        <ul class="ticks dark">
+          <li>Brand kit completo</li>
+          <li>Site de até 5 páginas</li>
+          <li>SEO e analytics</li>
+        </ul>
+        <span class="plan-btn" data-goto="#contato">quero este</span>
+      </div>
+
+      <div class="price tilt" data-plan>
+        <span class="tag">premium</span>
+        <h3>Premium</h3>
+        <b class="pr" data-v="10000">R$ 10.000</b>
+        <p>App + UX.</p>
+        <ul class="ticks dark">
+          <li>App web / mobile</li>
+          <li>Pesquisa e testes UX</li>
+          <li>Suporte 90 dias</li>
+        </ul>
+        <span class="plan-btn" data-goto="#contato">quero este</span>
+      </div>
+
+      <div class="price tilt" data-plan>
+        <span class="tag">custom</span>
+        <h3>Custom</h3>
+        <b class="pr" data-v="0">Sob consulta</b>
+        <p>Personalizado.</p>
+        <ul class="ticks dark">
+          <li>Escopo sob medida</li>
+          <li>Sprints mensais</li>
+          <li>Time dedicado</li>
+        </ul>
+        <span class="plan-btn" data-goto="#contato">falar agora</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROCESSO ================= -->
+  <section id="processo" class="reveal">
+    <div class="section-head">
+      <p class="eyebrow">como funciona</p>
+      <h2>Processo</h2>
+      <p class="sub">Clique nas etapas</p>
+    </div>
+
+    <div class="process-grid">
+      <div class="steps" id="steps">
+        <div class="on" tabindex="0" role="button" data-s="Entendimento: metas, público e requisitos.">
+          <span class="num">1</span><b>Entendimento</b><small>briefing e metas</small>
+        </div>
+        <div tabindex="0" role="button" data-s="Planejamento: plano e proposta.">
+          <span class="num">2</span><b>Planejamento</b><small>plano e proposta</small>
+        </div>
+        <div tabindex="0" role="button" data-s="Criação: ágil e iterativa.">
+          <span class="num">3</span><b>Criação</b><small>ágil e iterativa</small>
+        </div>
+      </div>
+
+      <div class="process-side">
+        <div class="shot frame"><img src="img/g4.png" alt="Dois celulares exibindo o aplicativo em desenvolvimento, etapa de criação"></div>
+        <div id="prog" aria-hidden="true"><i></i></div>
+        <p id="sInfo">Entendimento: metas, público e requisitos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DEPOIMENTOS ================= -->
+  <section id="depoimentos" class="reveal">
+    <div class="section-head">
+      <p class="eyebrow">quem já trabalhou comigo</p>
+      <h2>Depoimentos</h2>
+      <p class="sub">Gire o carrossel 3D com os botões ou arrastando</p>
+    </div>
+
+    <div class="ring-stage" id="ringStage">
+      <div class="ring" id="ring">
+        <figure class="slide" style="--i:0">
+          <blockquote id="q">"O trabalho foi incrível. Superou expectativas."</blockquote>
+          <figcaption id="w">— Maria, Startup</figcaption>
+        </figure>
+        <figure class="slide" style="--i:1">
+          <blockquote>"Site que vende de verdade."</blockquote>
+          <figcaption>— João, Varejo</figcaption>
+        </figure>
+        <figure class="slide" style="--i:2">
+          <blockquote>"Entrega rápida e ótima comunicação."</blockquote>
+          <figcaption>— Ana, Marketing</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="dots" id="dots">
+      <button class="on" aria-label="Depoimento 1"></button>
+      <button aria-label="Depoimento 2"></button>
+      <button aria-label="Depoimento 3"></button>
+    </div>
+    <div class="ring-nav">
+      <button class="btn ghost" id="prev" aria-label="Depoimento anterior">‹</button>
+      <button class="btn ghost" id="next" aria-label="Próximo depoimento">›</button>
+    </div>
+  </section>
+
+  <!-- ================= CONTATO ================= -->
+  <section id="contato" class="reveal">
+    <div class="card3d contact-card">
+      <div class="section-head">
+        <p class="eyebrow">resposta em até 24h</p>
+        <h2>Vamos Conversar</h2>
+        <p class="sub">Respondo em até 24h</p>
+      </div>
+
+      <form id="form" novalidate>
+        <label class="field">
+          <input id="n" name="nome" type="text" placeholder=" " autocomplete="name" required>
+          <span>Seu nome</span>
+        </label>
+        <label class="field">
+          <input id="e" name="email" type="email" placeholder=" " autocomplete="email" required>
+          <span>E-mail</span>
+        </label>
+        <label class="field area">
+          <textarea id="m" name="projeto" rows="4" placeholder=" " required></textarea>
+          <span>Detalhes do projeto</span>
+        </label>
+        <button class="btn send" type="submit">Enviar via WhatsApp</button>
+        <div id="msg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Gamma → GitHub 3D dinâmico • Henrique Luiz Dutra</p>
+  <p class="credito-estudio">
+    Site criado por <a href="https://rickdigitalestudio.github.io/profissional-rickdutra/" target="_blank" rel="noopener">Estúdio Rick Digital</a>
+  </p>
 </footer>
-<button id="top" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
-<script>
-// tilt
-document.querySelectorAll('.tilt').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.transform=`rotateY(${(e.clientX-r.left)/r.width*.5*20-10}deg) rotateX(${ -((e.clientY-r.top)/r.height*.5*20-10)}deg)`});c.addEventListener('mouseleave',()=>c.style.transform='')});
-// progress + top + reveal
-addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('bar').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';document.getElementById('top').style.display=h.scrollTop>600?'block':'none'});
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}));document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
-// typewriter
-const words=['meu mundo!','sites que vendem!','branding forte!','UX que encanta!'];let wi=0,ci=0,del=false;
-(function tw(){const el=document.getElementById('type');const w=words[wi];el.textContent=w.slice(0,ci);if(!del){ci++;if(ci>w.length+8)del=true}else{ci--;if(ci===0){del=false;wi=(wi+1)%words.length}}setTimeout(tw,del?40:90)})();
-const rot=['Responsivo','Rápido','Otimizado','Criativo'];let ri=0;setInterval(()=>{document.getElementById('rot').textContent=rot[ri++%rot.length]},1500);
-// counters
-const co=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('b').forEach(b=>{const t=+b.dataset.n;let c=0;const iv=setInterval(()=>{c+=Math.ceil(t/40);if(c>=t){c=t;clearInterval(iv)}b.textContent=c},40)});co.unobserve(e.target)}}));co.observe(document.querySelector('.stats'));
-// filter
-document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('on'));b.classList.add('on');const f=b.dataset.f;document.querySelectorAll('#gridP>div').forEach(d=>d.style.display=(f==='all'||d.dataset.c===f)?'':'none')});
-// tabs + steps
-document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('tInfo').textContent=b.dataset.t});
-const st=[...document.querySelectorAll('.steps div')];st.forEach((d,i)=>d.onclick=()=>{st.forEach(x=>x.classList.remove('on'));d.classList.add('on');document.getElementById('prog').firstElementChild.style.width=((i+1)/3*100)+'%';document.getElementById('sInfo').textContent=d.dataset.s});
-// depoimentos
-const Q=[['"O trabalho foi incrível. Superou expectativas."','— Maria, Startup'],['"Site que vende de verdade."','— João, Varejo'],['"Entrega rápida e ótima comunicação."','— Ana, Marketing']];let qi=0;
-function show(i){qi=(i+Q.length)%Q.length;document.getElementById('q').textContent=Q[qi][0];document.getElementById('w').textContent=Q[qi][1];document.querySelectorAll('.dots button').forEach((d,j)=>d.classList.toggle('on',j===qi))}
-document.getElementById('next').onclick=()=>show(qi+1);document.getElementById('prev').onclick=()=>show(qi-1);
-document.querySelectorAll('.dots button').forEach((d,j)=>d.onclick=()=>show(j));setInterval(()=>show(qi+1),5000);
-// pix
-document.getElementById('pix').onchange=e=>{document.querySelectorAll('.pr').forEach(b=>{const v=+b.dataset.v;const nv=e.target.checked?Math.round(v*.9):v;b.textContent='R$ '+nv.toLocaleString('pt-BR')})};
-// form
-function send(){const n=document.getElementById('n').value,e=document.getElementById('e').value,m=document.getElementById('m').value;const box=document.getElementById('msg');box.style.display='block';if(!n||!e||!m){box.textContent='Preencha nome, e-mail e projeto.';return}box.textContent='Abrindo WhatsApp...';open('https://wa.me/5511989426415?text='+encodeURIComponent('Olá! Sou '+n+' ('+e+'). Projeto: '+m),'_blank')}
-</script>
+
+<button id="top" aria-label="Voltar ao topo">↑</button>
+
+<!-- LIGHTBOX 3D -->
+<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Visualização do projeto">
+  <div class="lb-backdrop" data-close></div>
+  <div class="lb-card">
+    <button class="lb-btn lb-close" data-close aria-label="Fechar">×</button>
+    <button class="lb-btn lb-prev" aria-label="Projeto anterior">‹</button>
+    <button class="lb-btn lb-next" aria-label="Próximo projeto">›</button>
+    <figure>
+      <span class="lb-shot"><img id="lbImg" src="" alt=""></span>
+      <figcaption>
+        <span class="tag" id="lbTag">projeto</span>
+        <h3 id="lbTitle"></h3>
+        <p id="lbDesc"></p>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+
+<script type="module" src="js/app.js"></script>
 </body>
 </html>
